@@ -1,0 +1,91 @@
+# Design System: Weave Studio
+
+---
+
+## 1. Visual Theme & Atmosphere
+
+Weave Studio carries a composed, architectural calm — like a well-lit design atelier with concrete floors and natural light. The density is breathable but intentional: generous whitespace with structured rhythm, never sparse for its own sake.
+
+The aesthetic philosophy is quiet confidence: every element earns its place, nothing decorates without function. Blues anchor trust and focus; neutrals give content room to breathe. The overall mood is cool clarity with professional warmth.
+
+---
+
+## 2. Color Palette & Roles
+
+| Name         | Hex       | Role                                  |
+|--------------|-----------|---------------------------------------|
+| Anchor Blue  | #185FA5   | Primary actions, key links            |
+| Clarity Blue | #378ADD   | Hover states, highlights              |
+| Mist Blue    | #B5D4F4   | Input borders, dividers               |
+| Frost Blue   | #E6F1FB   | Tinted surfaces, badges               |
+| Midnight     | #042C53   | Dark headings, overlays               |
+| Canvas       | #F4F6F8   | Page background                       |
+| Surface      | #FFFFFF   | Cards, modals, panels                 |
+| Slate        | #888780   | Disabled states, secondary text       |
+
+---
+
+## 3. Typography Rules
+
+Typeface: DM Sans for all UI text (humanist proportions, crafted without being decorative).
+Monospaced: System mono stack for code, IDs, and technical strings.
+Italics: Reserved for editorial callouts only — never used structurally.
+
+| Style        | Size  | Weight | Tracking  | Notes                        |
+|--------------|-------|--------|-----------|------------------------------|
+| Display      | 22px  | 500    | -0.02em   | Page-level headings          |
+| Section      | 18px  | 500    | -0.01em   | Section and card headings    |
+| Body         | 14px  | 400    | 0         | Line height 1.7              |
+| Overline     | 11px  | 500    | +0.08em   | Uppercase labels, meta text  |
+
+---
+
+## 4. Component Stylings
+
+### Buttons
+- Shape: 6px border radius, 8px vertical padding
+- Primary: Anchor Blue (#185FA5) fill, white text
+- Ghost: Transparent background, 1.5px Clarity Blue (#378ADD) border, Anchor Blue text
+- Subtle: Frost Blue (#E6F1FB) background, Midnight (#042C53) text, no border
+- Hover: Primary darkens 10%; Ghost gets a Frost Blue background fill; Subtle border appears at Mist Blue
+
+### Cards / Containers
+- Border radius: 12px
+- Background: White (#FFFFFF)
+- Border: 0.5px solid #B5D4F4 (Mist Blue)
+- Shadow: 0 1px 4px rgba(24, 95, 165, 0.06) — subtle blue-tinted lift, no harsh drop shadows
+- Internal padding: 16px
+
+### Inputs / Forms
+- Border radius: 6px
+- Border at rest: 1.5px solid #B5D4F4 (Mist Blue)
+- Border on focus: 1.5px solid #378ADD (Clarity Blue) — border shift only, no box-shadow ring
+- Background: White (#FFFFFF)
+- Label: 12px, secondary color, positioned above the input
+- Placeholder text: Slate (#888780)
+
+---
+
+## 5. Layout Principles
+
+### Spacing
+Use multiples of 8px for all spacing decisions:
+- Component-internal gaps: 8px, 16px
+- Between components: 24px, 32px
+- Between sections: 48px
+Whitespace is structural, not decorative filler.
+
+### Grid
+- 12-column grid
+- 24px gutters
+- Max content width: 1120px
+- Page margins: 40px at desktop, 20px at mobile
+- No full-bleed elements except hero images
+
+### Alignment
+- Left-align all text and labels universally
+- Center only for hero callouts or icon-only empty states
+- Right-align numeric data in tables
+- Horizontal rules: 0.5px — never bold dividers
+
+---

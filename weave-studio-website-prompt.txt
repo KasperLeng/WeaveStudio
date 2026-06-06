@@ -1,0 +1,326 @@
+# Weave Studio — Website Build Prompt
+
+---
+
+## Project Overview
+
+Build the full marketing website for **Weave Studio**, a web design studio that creates
+customized websites for clients. The site is a single scrollable page that functions as
+both a portfolio showcase and a client acquisition tool.
+
+The brand voice is: confident, minimal, professional, creative. Never salesy or corporate.
+
+---
+
+## Design System
+
+Reference file: weave-studio-design-system.txt
+
+Quick summary:
+- Font: DM Sans (Google Fonts) — weights 400 and 500 only
+- Page background: #F4F6F8
+- Surface (cards, nav): #FFFFFF
+- Primary action: #185FA5 (Anchor Blue)
+- Hover / highlights: #378ADD (Clarity Blue)
+- Input borders: #B5D4F4 (Mist Blue)
+- Tinted backgrounds / badges: #E6F1FB (Frost Blue)
+- Dark headings / overlays: #042C53 (Midnight)
+- Secondary text: #888780 (Slate)
+- Spacing: multiples of 8px
+- Card border radius: 12px
+- Button border radius: 6px
+- Max content width: 1120px, centered, 40px page margins
+
+---
+
+## Tech Stack
+
+- Single-file HTML (index.html) with embedded CSS and vanilla JS
+- No frameworks or build tools required
+- Google Fonts import: DM Sans 400 + 500
+- Smooth scroll behavior on all anchor links
+- All sections on one page with id anchors for nav links
+
+---
+
+## Site Structure
+
+Build the following sections in this exact order:
+
+---
+
+### Section 1: Navigation (Sticky)
+
+- Sticks to top of viewport at all times
+- Background: white (#FFFFFF) with a very subtle bottom border (0.5px solid #B5D4F4)
+- Add a slight backdrop blur (backdrop-filter: blur(8px)) and 0.95 opacity so it feels glassy
+- Left: "Weave Studio." wordmark in DM Sans 500, color #042C53, font-size 18px
+- Right: nav links — Work | Services | About Us | Contact
+  - Links: font-size 14px, color #888780, no underline
+  - Hover: color changes to #185FA5
+  - Active/current section: color #185FA5, font-weight 500
+- Use IntersectionObserver to highlight the active nav link as user scrolls
+- Height: 60px
+
+---
+
+### Section 2: Hero
+
+Layout: two-column, left text / right graphic. Vertically centered. Min-height: 90vh.
+Left column: 55% width. Right column: 45% width.
+
+Left side content:
+  - Small overline label above headline:
+    Text: "Web Design Studio · Vancouver"
+    Style: 11px, font-weight 500, letter-spacing 0.08em, uppercase, color #378ADD
+  - Main headline:
+    Text: "We weave ideas into digital experiences."
+    Style: 52px, font-weight 500, color #042C53, line-height 1.15, letter-spacing -0.02em
+  - Sub-copy below headline:
+    Text: "From concept to launch, we build custom websites tailored to your brand —
+    not templates, not shortcuts."
+    Style: 17px, font-weight 400, color #888780, line-height 1.7, max-width 420px
+  - Two CTA buttons side by side, margin-top 40px:
+    Primary: "See Our Work" → scrolls to #work section
+      Style: background #185FA5, color white, padding 12px 24px, border-radius 6px,
+      font-size 14px, font-weight 500. Hover: background #378ADD
+    Secondary: "Get in Touch" → scrolls to #contact section
+      Style: transparent background, border 1.5px solid #378ADD, color #185FA5,
+      padding 11px 24px, border-radius 6px, font-size 14px. Hover: background #E6F1FB
+
+Right side content:
+  - Draw a clean, minimal abstract SVG graphic that suggests a "woven" or interlaced pattern
+  - Use thin lines (1px stroke, color #B5D4F4) crossing in a subtle grid or diagonal weave
+  - Overlay two or three soft filled rectangles or shapes in #E6F1FB and #378ADD at low opacity
+  - The graphic should feel geometric and refined, not decorative or loud
+  - Make it roughly 480x480px, centered in the right column
+  - No drop shadows, no gradients
+
+Background of hero section:
+  - Page background color #F4F6F8 (no image, no texture)
+  - Keep it clean and breathable
+
+---
+
+### Section 3: Featured Work
+
+Section id: work
+Section background: #FFFFFF
+Padding: 80px 0
+
+Header row:
+  - Left: Section label "Featured Work" — 11px, uppercase, letter-spacing 0.08em, color #378ADD
+    Below that: heading "Our Projects" — 32px, font-weight 500, color #042C53
+  - Right: Filter pills — All | Student Portfolio | Restaurant | AI Tool
+    Each pill: 13px, font-weight 500, padding 6px 14px, border-radius 20px
+    Default: background #F4F6F8, color #888780, border: 0.5px solid #B5D4F4
+    Active: background #185FA5, color #FFFFFF, border: none
+    Clicking a pill filters the visible cards with a fade transition
+
+Portfolio grid:
+  - 2-column CSS grid, gap 24px
+  - All four projects shown by default
+  - Clicking a filter pill shows only matching genre cards; others fade out (opacity 0.2, not hidden)
+
+Portfolio Cards — build 4 cards with this data:
+
+  Card 1:
+    Genre: Student Portfolio
+    Name: Kasper Leng
+    Description: Personal portfolio for a design student — clean layout with project showcases.
+    URL: https://kasperleng.vercel.app/
+    Thumbnail color: use a solid #E6F1FB rectangle with a small "KL" monogram in #185FA5
+
+  Card 2:
+    Genre: Student Portfolio
+    Name: Eddie Han
+    Description: CS student portfolio for Eddie Han at UBC — blends logic with creative design.
+    URL: https://eddiehan.vercel.app/
+    Thumbnail color: use a solid #E6F1FB rectangle with a small "EH" monogram in #185FA5
+
+  Card 3:
+    Genre: Restaurant
+    Name: Solo Pocha
+    Description: Restaurant site for a Korean street food & late-night drinks bar in Vancouver.
+    URL: https://www.solo-pocha.ca/
+    Thumbnail color: use a warm #FFF3E0 rectangle (light amber) with text "포차" in #E65100
+
+  Card 4:
+    Genre: AI Tool
+    Name: OsanoAI
+    Description: Marketing site for a multi-agent AI runtime dashboard platform.
+    URL: https://osanoai.vercel.app/
+    Thumbnail color: use a dark #042C53 rectangle with "AI" text in #378ADD
+
+Card anatomy (each card):
+  - Background: #FFFFFF, border-radius 12px, border 0.5px solid #B5D4F4
+  - Box shadow: 0 2px 12px rgba(24, 95, 165, 0.07)
+  - Thumbnail: full width, height 200px, border-radius 12px 12px 0 0
+  - Card body padding: 20px
+  - Genre tag: 11px, uppercase, letter-spacing 0.08em, color #185FA5, background #E6F1FB,
+    padding 4px 10px, border-radius 20px, display inline-block, margin-bottom 10px
+  - Project name: 18px, font-weight 500, color #042C53, margin-bottom 6px
+  - Description: 13px, color #888780, line-height 1.6, margin-bottom 16px
+  - "View Site →" link: 13px, color #185FA5, font-weight 500, text-decoration none,
+    opens URL in new tab. Hover: color #378ADD, underline
+
+---
+
+### Section 4: Services / About Us
+
+Section id: services
+Section background: #F4F6F8
+Padding: 80px 0
+
+Header:
+  - Overline: "What We Offer" — 11px, uppercase, letter-spacing 0.08em, color #378ADD
+  - Heading: "Built for your business." — 32px, font-weight 500, color #042C53
+  - Subtext: "Every project is different. We offer three core service types — pick what fits,
+    or bring your own idea and we'll shape it together." — 16px, color #888780, max-width 560px
+
+Build two columns side by side, roughly 55% / 45% split:
+
+Left column — Service Category Cards:
+
+  Build 3 cards in a vertical stack:
+
+  Card A:
+    Icon: a simple inline SVG icon (briefcase or presentation)
+    Title: Business Presentation
+    Body: Pitch decks, proposal sites, and one-pagers that make your brand impossible to ignore.
+    Tags: ["Pitch Sites", "One-Pagers", "Brand Decks"]
+
+  Card B:
+    Icon: a simple inline SVG icon (storefront / shopping bag)
+    Title: Web Storefront
+    Body: E-commerce and product sites designed to convert — fast, clean, and built to scale.
+    Tags: ["E-Commerce", "Product Pages", "Checkout Flow"]
+
+  Card C:
+    Icon: a simple inline SVG icon (person / user)
+    Title: Personal Websites
+    Body: Portfolios and personal brands that actually represent who you are.
+    Tags: ["Portfolios", "Resumes", "Personal Brand"]
+
+  Card style:
+    Background: #FFFFFF, border-radius 12px, border 0.5px solid #B5D4F4
+    Padding: 24px
+    Gap between cards: 16px
+    Title: 17px, font-weight 500, color #042C53, margin-bottom 8px
+    Body: 14px, color #888780, line-height 1.6, margin-bottom 12px
+    Tags: each tag is a pill — 11px, #E6F1FB background, #185FA5 text,
+      padding 4px 10px, border-radius 20px, margin 2px
+
+Right column — Pricing / Engagement Models:
+
+  Stack 4 minimal info rows vertically:
+
+  Row 1:
+    Label: "All-Inclusive Flat Rate"
+    Detail: "One price, zero surprises. Covers design, development, and launch."
+
+  Row 2:
+    Label: "Full-Service Retainer"
+    Detail: "Ongoing support, updates, and new features — we become your web team."
+
+  Row 3:
+    Label: "Your Idea, Our Build"
+    Detail: "Bring a concept or mood board. We'll quote it, shape it, and ship it."
+
+  Row 4:
+    Label: "Work With Us"
+    Detail: "Agencies and studios — we take on white-label builds and overflow work."
+
+  Row style:
+    Each row: padding 20px 0, border-bottom 0.5px solid #B5D4F4, last row no border
+    Label: 15px, font-weight 500, color #042C53, margin-bottom 4px
+    Detail: 13px, color #888780, line-height 1.6
+
+---
+
+### Section 5: Contact
+
+Section id: contact
+Section background: #FFFFFF
+Padding: 80px 0
+
+Two-column layout, roughly equal:
+
+Left column:
+  - Overline: "Get In Touch" — 11px, uppercase, letter-spacing 0.08em, color #378ADD
+  - Heading: "Let's build something together." — 32px, font-weight 500, color #042C53,
+    max-width 380px, line-height 1.25
+  - Body: "Tell us about your project — even if it's just a rough idea. We'll get back
+    to you within one business day." — 15px, color #888780, line-height 1.7, margin-top 16px
+
+Right column — Contact Form:
+
+  Fields:
+    1. Name input: placeholder "Your name", type text
+    2. Email input: placeholder "your@email.com", type email
+    3. Textarea: placeholder "Tell us about your project...", rows 5
+    4. Submit button: text "Send Message →"
+       Style: full width, background #185FA5, color white, padding 14px,
+       border-radius 6px, font-size 15px, font-weight 500, border none, cursor pointer
+       Hover: background #378ADD
+
+  All inputs:
+    Border: 1.5px solid #B5D4F4
+    Border-radius: 6px
+    Background: #FFFFFF
+    Padding: 10px 14px
+    Font-size: 14px, font-family DM Sans
+    Color: #042C53
+    Placeholder color: #B5D4F4
+    Focus border: 1.5px solid #378ADD, outline none
+    Width: 100%, box-sizing border-box
+    Margin-bottom: 14px
+
+  On submit: prevent default, show a simple inline success message below the button:
+    Text: "Message sent! We'll be in touch soon."
+    Style: 14px, color #185FA5, font-weight 500, margin-top 12px
+
+---
+
+### Footer
+
+Background: #042C53
+Padding: 32px 0
+
+Two columns:
+  Left: "Weave Studio." in DM Sans 500, 16px, color #FFFFFF
+        "Vancouver, BC" below it — 13px, color #85B7EB
+  Right: Nav links — Work | Services | About Us | Contact
+         Same scroll behavior as header nav
+         Font-size 13px, color #85B7EB, no underline
+         Hover: color #FFFFFF
+         Gap between links: 24px
+
+Bottom row below both columns, border-top 0.5px solid rgba(255,255,255,0.1), margin-top 24px:
+  "© 2025 Weave Studio. All rights reserved." — 12px, color rgba(255,255,255,0.4), centered
+
+---
+
+## Behavior Notes
+
+- All nav links scroll smoothly to their section using scroll-behavior: smooth on html element
+- Active nav link detection via IntersectionObserver on each section (threshold 0.4)
+- Filter pills on the Work section use JS to toggle a "hidden" class (opacity + pointer-events)
+  with a 200ms CSS transition on opacity
+- Form submit is handled client-side only (no backend needed) — just show the success message
+- All external links (portfolio cards) open in a new tab with rel="noopener noreferrer"
+- Page should be fully responsive:
+  - Below 768px: all two-column layouts stack to single column
+  - Nav collapses to a hamburger menu on mobile (simple toggle)
+  - Font sizes scale down ~15% on mobile
+
+---
+
+## File Output
+
+Deliver as a single index.html file.
+All CSS in a <style> block in the <head>.
+All JS in a <script> block before </body>.
+No external dependencies except Google Fonts (DM Sans).
+
+---
