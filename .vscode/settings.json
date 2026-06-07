@@ -1,0 +1,12 @@
+{
+	"explorer.fileNesting.enabled": true,
+	"explorer.sortOrder": "filesFirst",
+  "css.validate": false,
+	"explorer.fileNesting.patterns": {
+		"package.json": "package-lock.json, .npmrc, .nvmrc, .prettierrc, .eslintrc*",
+		"next.config.*": "next-env.d.ts, postcss.config.*, instrumentation*",
+		".env": ".env.*, .gitignore, .gitattributes",
+		"tailwind.config.*": "tailwind.config.*"
+    
+	}
+}
