@@ -44,14 +44,14 @@ export default function Work() {
   const [activeFilter, setActiveFilter] = useState<string>("All");
 
   return (
-    <section id="work" data-nav-section="work" className="bg-white py-20">
+    <section id="work" data-nav-section="work" className="scroll-mt-20">
       <div className="mx-auto max-w-[1120px] px-10">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
           <div>
             <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.08em] text-clarity">
               Featured Work
             </p>
-            <h2 className="text-[32px] font-medium leading-[1.2] tracking-[-0.01em] text-midnight">
+            <h2 className="text-[32px] font-medium leading-[1.2] tracking-[-0.01em] text-black">
               Our Projects
             </h2>
           </div>
@@ -71,7 +71,7 @@ export default function Work() {
                   onClick={() => setActiveFilter(filter)}
                   className={`rounded-full px-[14px] py-[6px] text-[13px] font-medium transition-colors ${isActive
                     ? "border-none bg-anchor text-white"
-                    : "border border-mist bg-bg text-slate hover:border-clarity hover:text-anchor"
+                    : "border border-mist text-midnight hover:border-clarity hover:text-anchor"
                     }`}
                 >
                   {filter}

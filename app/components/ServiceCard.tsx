@@ -13,8 +13,8 @@ export default function ServiceCard({ icon, title, body, tags }: ServiceCardProp
       <div className="mb-3 text-anchor" aria-hidden="true">
         {icon}
       </div>
-      <h3 className="mb-2 text-[17px] font-medium text-midnight">{title}</h3>
-      <p className="mb-3 text-[14px] leading-[1.6] text-slate">{body}</p>
+      <h3 className="mb-2 text-[17px] font-medium text-black">{title}</h3>
+      <p className="mb-3 text-[14px] leading-[1.6] text-midnight">{body}</p>
       <div className="flex flex-wrap">
         {tags.map((tag) => (
           <span

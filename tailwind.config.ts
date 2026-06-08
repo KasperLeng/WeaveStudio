@@ -9,17 +9,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg: "#F4F6F8",
         surface: "#FFFFFF",
         anchor: "#185FA5",
         clarity: "#378ADD",
         mist: "#B5D4F4",
         frost: "#E6F1FB",
-        midnight: "#042C53",
-        slate: "#888780",
+        midnight: "#263e4d",
       },
       fontFamily: {
-        sans: ["var(--font-dm-sans)", "system-ui", "sans-serif"],
+        sans: ["var(--font-ubuntu)", "system-ui", "sans-serif"],
+        display: ["var(--font-dirtyline)", "var(--font-ubuntu)", "system-ui", "sans-serif"],
       },
     },
   },

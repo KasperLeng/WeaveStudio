@@ -69,23 +69,23 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" data-nav-section="contact" className="bg-white py-20">
+    <section id="contact" data-nav-section="contact" className="scroll-mt-20 py-20">
       <div className="mx-auto grid max-w-[1120px] grid-cols-1 items-start gap-12 px-10 md:grid-cols-2">
         <div>
           <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.08em] text-clarity">
             Get In Touch
           </p>
-          <h2 className="max-w-[380px] text-[32px] font-medium leading-[1.25] tracking-[-0.01em] text-midnight">
+          <h2 className="max-w-[380px] text-[32px] font-medium leading-[1.25] tracking-[-0.01em] text-black">
             Let&apos;s build something together.
           </h2>
-          <p className="mt-4 text-[15px] leading-[1.7] text-slate">
+          <p className="mt-4 text-[15px] leading-[1.7] text-midnight">
             Tell us about your project — even if it&apos;s just a rough idea. We&apos;ll get back
             to you within one business day.
           </p>
         </div>
 
         <form onSubmit={handleSubmit} noValidate>
-          <label className="mb-[6px] block text-[12px] text-slate" htmlFor="contact-name">
+          <label className="mb-[6px] block text-[12px] text-midnight" htmlFor="contact-name">
             Name
           </label>
           <input
@@ -99,10 +99,10 @@ export default function Contact() {
               hideMessages();
               setName(e.target.value);
             }}
-            className="mb-[14px] w-full rounded-[6px] border border-mist bg-white px-[14px] py-[10px] text-[14px] text-midnight placeholder:text-mist focus:border-clarity focus:outline-none"
+            className="mb-[14px] w-full rounded-[6px] border border-mist bg-white px-[14px] py-[10px] text-[14px] text-black placeholder:text-mist focus:border-clarity focus:outline-none"
           />
 
-          <label className="mb-[6px] block text-[12px] text-slate" htmlFor="contact-email">
+          <label className="mb-[6px] block text-[12px] text-midnight" htmlFor="contact-email">
             Email
           </label>
           <input
@@ -118,10 +118,10 @@ export default function Contact() {
               setEmail(e.target.value);
               setEmailValid(e.target.checkValidity());
             }}
-            className="mb-[14px] w-full rounded-[6px] border border-mist bg-white px-[14px] py-[10px] text-[14px] text-midnight placeholder:text-mist focus:border-clarity focus:outline-none"
+            className="mb-[14px] w-full rounded-[6px] border border-mist bg-white px-[14px] py-[10px] text-[14px] text-black placeholder:text-mist focus:border-clarity focus:outline-none"
           />
 
-          <label className="mb-[6px] block text-[12px] text-slate" htmlFor="contact-message">
+          <label className="mb-[6px] block text-[12px] text-midnight" htmlFor="contact-message">
             Message
           </label>
           <textarea
@@ -134,7 +134,7 @@ export default function Contact() {
               hideMessages();
               setMessage(e.target.value);
             }}
-            className="mb-[14px] w-full rounded-[6px] border border-mist bg-white px-[14px] py-[10px] text-[14px] text-midnight placeholder:text-mist focus:border-clarity focus:outline-none"
+            className="mb-[14px] w-full rounded-[6px] border border-mist bg-white px-[14px] py-[10px] text-[14px] text-black placeholder:text-mist focus:border-clarity focus:outline-none"
           />
 
           <button

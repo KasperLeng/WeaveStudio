@@ -57,16 +57,16 @@ const pricingRows = [
 
 export default function Services() {
   return (
-    <section id="services" data-nav-section="services" className="bg-bg py-20">
+    <section id="services" data-nav-section="services" className="scroll-mt-20 py-20">
       <div className="mx-auto max-w-[1120px] px-10">
         <header className="mb-10">
           <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.08em] text-clarity">
             What We Offer
           </p>
-          <h2 className="text-[32px] font-medium leading-[1.2] tracking-[-0.01em] text-midnight">
+          <h2 className="text-[32px] font-medium leading-[1.2] tracking-[-0.01em] text-black">
             Built for your business.
           </h2>
-          <p className="mt-4 max-w-[560px] text-[16px] text-slate">
+          <p className="mt-4 max-w-[560px] text-[16px] text-midnight">
             Every project is different. We offer three core service types — pick what fits,
             or bring your own idea and we&apos;ll shape it together.
           </p>
@@ -85,8 +85,8 @@ export default function Services() {
                 key={row.label}
                 className="border-b border-mist py-5 last:border-none"
               >
-                <p className="mb-1 text-[15px] font-medium text-midnight">{row.label}</p>
-                <p className="text-[13px] leading-[1.6] text-slate">{row.detail}</p>
+                <p className="mb-1 text-[15px] font-medium text-black">{row.label}</p>
+                <p className="text-[13px] leading-[1.6] text-midnight">{row.detail}</p>
               </div>
             ))}
           </div>
