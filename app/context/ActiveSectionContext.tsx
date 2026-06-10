@@ -43,36 +43,20 @@ const ActiveSectionContext = createContext<ActiveSectionContextValue>({
   registerNavButton: () => { },
 });
 
-function getActiveSectionFromScroll(sections: Element[]): string {
-  if (window.scrollY < 80) return "home";
+const SCROLL_SPY_OFFSET = 120;
 
-  const scrollBottom = window.scrollY + window.innerHeight;
-  const docHeight = document.documentElement.scrollHeight;
-  if (scrollBottom >= docHeight - 80) {
-    const last = sections[sections.length - 1];
-    return last?.getAttribute("data-nav-section") ?? "contact";
+function getActiveSectionFromScroll(sections: Element[]): string {
+  let active = "home";
+
+  for (const el of sections) {
+    const id = el.getAttribute("data-nav-section");
+    if (!id) continue;
+    if (el.getBoundingClientRect().top <= SCROLL_SPY_OFFSET) {
+      active = id;
+    }
   }
 
-  let bestId = "home";
-  let bestRatio = 0;
-
-  sections.forEach((el) => {
-    const id = el.getAttribute("data-nav-section");
-    if (!id) return;
-
-    const rect = el.getBoundingClientRect();
-    const visibleTop = Math.max(0, rect.top);
-    const visibleBottom = Math.min(window.innerHeight, rect.bottom);
-    const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-    const ratio = visibleHeight / rect.height;
-
-    if (ratio > bestRatio) {
-      bestRatio = ratio;
-      bestId = id;
-    }
-  });
-
-  return bestId;
+  return active;
 }
 
 export function ActiveSectionProvider({ children }: { children: ReactNode }) {
@@ -80,8 +64,10 @@ export function ActiveSectionProvider({ children }: { children: ReactNode }) {
   const [indicatorStyle, setIndicatorStyle] = useState(defaultIndicatorStyle);
   const navRef = useRef<HTMLElement | null>(null);
   const buttonRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const isScrollingTo = useRef<string | null>(null);
 
   const scrollToSection = useCallback((section: string) => {
+    isScrollingTo.current = section;
     setActiveSection(section);
     document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
   }, []);
@@ -102,23 +88,48 @@ export function ActiveSectionProvider({ children }: { children: ReactNode }) {
       document.querySelectorAll("[data-nav-section]"),
     );
 
-    const syncFromScroll = () => {
+    let rafId = 0;
+    let scrollEndTimer: ReturnType<typeof setTimeout> | undefined;
+
+    const applyActiveSection = () => {
       setActiveSection(getActiveSectionFromScroll(sections));
     };
 
-    const observer = new IntersectionObserver(() => syncFromScroll(), {
-      threshold: [0, 0.1, 0.25, 0.4, 0.5, 0.75, 1],
-    });
+    const syncFromScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(applyActiveSection);
+    };
 
-    sections.forEach((section) => observer.observe(section));
+    const endProgrammaticScroll = () => {
+      if (!isScrollingTo.current) return;
+      isScrollingTo.current = null;
+      applyActiveSection();
+    };
 
-    syncFromScroll();
-    window.addEventListener("scroll", syncFromScroll, { passive: true });
+    const onScroll = () => {
+      if (isScrollingTo.current) {
+        clearTimeout(scrollEndTimer);
+        scrollEndTimer = setTimeout(endProgrammaticScroll, 100);
+        return;
+      }
+      syncFromScroll();
+    };
+
+    const onScrollEnd = () => {
+      clearTimeout(scrollEndTimer);
+      endProgrammaticScroll();
+    };
+
+    applyActiveSection();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("scrollend", onScrollEnd);
     window.addEventListener("resize", syncFromScroll);
 
     return () => {
-      observer.disconnect();
-      window.removeEventListener("scroll", syncFromScroll);
+      cancelAnimationFrame(rafId);
+      clearTimeout(scrollEndTimer);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("scrollend", onScrollEnd);
       window.removeEventListener("resize", syncFromScroll);
     };
   }, []);
