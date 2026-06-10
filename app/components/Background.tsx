@@ -1,9 +1,48 @@
-"use client"
-import { ShaderGradientCanvas, ShaderGradient } from '@shadergradient/react'
+"use client";
 
-export default function Background() {
+import { ShaderGradientCanvas, ShaderGradient } from "@shadergradient/react";
+import { useEffect, useRef } from "react";
+
+type BackgroundProps = {
+  onReady?: () => void;
+};
+
+export default function Background({ onReady }: BackgroundProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const readyRef = useRef(false);
+
+  useEffect(() => {
+    if (!onReady) return;
+
+    let raf = 0;
+    let frames = 0;
+
+    const markReady = () => {
+      if (readyRef.current) return;
+      readyRef.current = true;
+      onReady();
+    };
+
+    const poll = () => {
+      const canvas = containerRef.current?.querySelector("canvas");
+
+      if (canvas && canvas.width > 0 && canvas.height > 0) {
+        frames += 1;
+        if (frames >= 2) {
+          markReady();
+          return;
+        }
+      }
+
+      raf = requestAnimationFrame(poll);
+    };
+
+    raf = requestAnimationFrame(poll);
+    return () => cancelAnimationFrame(raf);
+  }, [onReady]);
+
   return (
-    <div className="fixed inset-0 -z-10" aria-hidden="true">
+    <div ref={containerRef} className="fixed inset-0 -z-10" aria-hidden="true">
       <ShaderGradientCanvas
         style={{ position: 'absolute', inset: 0 }}
         pixelDensity={1.5}

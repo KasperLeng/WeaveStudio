@@ -3,46 +3,39 @@ import Image from "next/image";
 type ProjectCardProps = {
   genre: string;
   name: string;
-  description: string;
   url: string;
   thumbnail: string;
-  dimmed?: boolean;
 };
 
 const ProjectCard = ({
   genre,
   name,
-  description,
   url,
   thumbnail,
-  dimmed = false,
 }: ProjectCardProps) => {
   return (
-    <article
-      className={`overflow-hidden rounded-[12px] border border-mist bg-white shadow-[0_2px_12px_rgba(24,95,165,0.07)] transition-opacity duration-200 ${dimmed ? "pointer-events-none opacity-20" : ""
-        }`}
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group block overflow-hidden rounded-[12px] shadow-[0_2px_12px_rgba(24,95,165,0.07)] transition-shadow duration-200 hover:shadow-[0_4px_20px_rgba(24,95,165,0.12)]"
     >
-      <div className="relative h-[200px] w-full overflow-hidden rounded-t-[12px]">
-        <Image src={thumbnail} alt={name} fill className="object-cover object-top" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+      <div className="relative aspect-[16/10] w-full overflow-hidden bg-white/20">
+        <Image
+          src={thumbnail}
+          alt={name}
+          fill
+          className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+          sizes="(max-width: 1024px) 50vw, 512px"
+        />
       </div>
-      <div className="p-5">
-        <span className="mb-2.5 inline-block rounded-full bg-frost px-[10px] py-[4px] text-[11px] font-medium uppercase tracking-[0.08em] text-anchor">
+      <div className="flex items-center justify-between gap-3 bg-white/40 px-3.5 py-2.5">
+        <h3 className="text-[14px] font-medium text-black">{name}</h3>
+        <span className="shrink-0 rounded-full bg-frost px-[10px] py-[4px] text-[11px] font-medium uppercase tracking-[0.08em] text-anchor">
           {genre}
         </span>
-        <h3 className="mb-1.5 text-[18px] font-medium text-black">{name}</h3>
-        <p className="mb-4 text-[13px] leading-[1.6] text-midnight">
-          {description}
-        </p>
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[13px] font-medium text-anchor no-underline hover:text-clarity hover:underline"
-        >
-          View Site →
-        </a>
       </div>
-    </article>
+    </a>
   );
 };
 export default ProjectCard;

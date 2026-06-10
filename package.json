@@ -3,7 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
+    "dev:clean": "rm -rf .next var && next dev --webpack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

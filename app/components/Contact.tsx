@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useRef, useState } from "react";
+import Footer from "./Footer";
 
 const CONTACT_FORM_URL =
   process.env.NEXT_PUBLIC_CONTACT_FORM_URL?.trim() || "";
@@ -69,8 +70,12 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" data-nav-section="contact" className="scroll-mt-20 py-20">
-      <div className="mx-auto grid max-w-[1120px] grid-cols-1 items-start gap-12 px-10 md:grid-cols-2">
+    <section
+      id="contact"
+      data-nav-section="contact"
+      className="box-border flex h-dvh snap-start snap-always flex-col pt-[var(--nav-offset)]"
+    >
+      <div className="mx-auto grid w-full max-w-[1120px] flex-1 grid-cols-1 items-center gap-10 px-10 md:grid-cols-2">
         <div>
           <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.08em] text-clarity">
             Get In Touch
@@ -156,6 +161,7 @@ export default function Contact() {
           )}
         </form>
       </div>
+      <Footer />
     </section>
   );
 }

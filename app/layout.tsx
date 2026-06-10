@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ActiveSectionProvider } from "./context/ActiveSectionContext";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Background from "./components/Background";
+import AppShell from "./components/AppShell";
 import { dirtyline, ubuntu } from "@/lib/fonts";
 
 export const metadata: Metadata = {
@@ -23,12 +20,7 @@ export default function RootLayout({
       className={`${ubuntu.variable} ${dirtyline.variable} font-sans`}
     >
       <body className="text-black antialiased">
-        <Background />
-        <ActiveSectionProvider>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-        </ActiveSectionProvider>
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

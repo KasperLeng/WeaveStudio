@@ -57,14 +57,15 @@ const pricingRows = [
 
 export default function Services() {
   return (
-    <section id="services" data-nav-section="services" className="scroll-mt-20 py-20">
-      <div className="mx-auto max-w-[1120px] px-10">
-        <header className="mb-10">
-          <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.08em] text-clarity">
-            What We Offer
-          </p>
-          <h2 className="text-[32px] font-medium leading-[1.2] tracking-[-0.01em] text-black">
-            Built for your business.
+    <section
+      id="services"
+      data-nav-section="services"
+      className="box-border flex h-dvh snap-start snap-always flex-col pt-[calc(var(--nav-offset)+2rem)]"
+    >
+      <div className="mx-auto flex min-h-0 w-full max-w-[1120px] flex-1 flex-col px-10 pb-6">
+        <header className="mb-4 shrink-0">
+          <h2 className="text-[32px] font-display font-medium leading-[1.2] tracking-[-0.01em] text-black">
+            built for your business
           </h2>
           <p className="mt-4 max-w-[560px] text-[16px] text-midnight">
             Every project is different. We offer three core service types — pick what fits,
@@ -72,8 +73,8 @@ export default function Services() {
           </p>
         </header>
 
-        <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-[55%_45%]">
-          <div className="flex flex-col gap-4">
+        <div className="grid grid-cols-1 items-start gap-5 md:grid-cols-[55%_45%]">
+          <div className="flex flex-col gap-3">
             {services.map((service) => (
               <ServiceCard key={service.title} {...service} />
             ))}
@@ -83,7 +84,7 @@ export default function Services() {
             {pricingRows.map((row) => (
               <div
                 key={row.label}
-                className="border-b border-mist py-5 last:border-none"
+                className="border-b border-mist py-4 last:border-none"
               >
                 <p className="mb-1 text-[15px] font-medium text-black">{row.label}</p>
                 <p className="text-[13px] leading-[1.6] text-midnight">{row.detail}</p>

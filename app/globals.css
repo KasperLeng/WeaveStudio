@@ -4,10 +4,53 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
+:root {
+  --nav-offset: 5.5rem; /* sticky top-3 + h-16 + breathing room */
+}
+
+@layer components {
+  .page-section {
+    @apply box-border flex h-dvh snap-start snap-always flex-col justify-center;
+    padding-top: var(--nav-offset);
+  }
+
+  .hero-section {
+    padding-bottom: var(--nav-offset);
+  }
+
+  .work-cards-scroll {
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .work-cards-scroll::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 html::-webkit-scrollbar {
   display: none;
+}
+
+@keyframes loading-dot {
+  0%,
+  80%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-6px);
+  }
+}
+
+.animate-loading-dot {
+  animation: loading-dot 1s ease-in-out infinite;
 }
