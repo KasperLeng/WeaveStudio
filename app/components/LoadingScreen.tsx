@@ -6,7 +6,7 @@ export default function LoadingScreen({ visible }: LoadingScreenProps) {
   return (
     <div
       aria-hidden={!visible}
-      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#dff4f8] transition-opacity duration-[2000ms] ease-in-out 
+      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#dff4f8] transition-opacity duration-1000 ease-in-out 
         ${visible ? "opacity-100" : "pointer-events-none opacity-0"}`}
     >
       <p className="font-display text-2xl font-medium tracking-wide text-black">
